@@ -4,11 +4,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>net.conquestmc</groupId>
-        <artifactId>conquest-parent</artifactId>
-        <version>1.0.0C-SNAPSHOT</version>
-    </parent>
+   <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>2.1.4.RELEASE</version>
+    <relativePath/> <!-- lookup parent from repository -->
+   </parent>
 
     <groupId>net.conquestmc.bookstore</groupId>
     <artifactId>Bookstore</artifactId>
@@ -17,8 +18,7 @@
     <name>Bookstore</name>
 
     <properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
     </properties>
 
     <build>
