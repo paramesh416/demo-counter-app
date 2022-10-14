@@ -1,5 +1,7 @@
 pipeline {
   agent any
+  environment {
+    PATH = "/opt/maven/bin:$PATH"
   stages {
     stage('Git Chechout'){
        steps {
@@ -7,22 +9,13 @@ pipeline {
        }
     }
     stage('UNIT Testing') {
-      steps {
-        withMaven(maven: 'maven_3_8_6') {
-           sh 'mvn clean install'
-          }
+      steps{
+        sh 'maven test'
       }
     }
-      
-      stage('Test Stage'){
-        steps {
-            withMaven(maven: 'maven_3_8_6') {
-              sh 'mvn test'
-                }
-        }
-      }
   }
 }
+   
 
 
 
