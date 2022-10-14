@@ -6,14 +6,12 @@ pipeline {
       git branch: 'main', url: 'https://github.com/paramesh416/demo-counter-app.git'
        }
     }
-    stages {
         stage ('Compile Stage') {
             steps {
                 withMaven(maven: 'maven_3_8_6') {
                     sh 'mvn clean install'
                 }
             }
-        }
         
         stage ('Test Stage') {
             steps {
