@@ -7,13 +7,15 @@ pipeline {
        }
     }
     stage('UNIT Testing'){
+      steps{
         withMaven(maven: 'mvn') {
             sh "mvn test"
-         
-       }
+        }
+      }
     }
   }
 }
+
 
    
 
