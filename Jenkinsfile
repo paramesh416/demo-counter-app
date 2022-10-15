@@ -19,6 +19,17 @@ pipeline {
         sh "mvn verify -DskipUnittests"
       }
     }
+    stage('Maven Build'){
+      steps{
+        sh "mvn clean install"
+      }
+    }
+     stage('Static Code Analysis'){
+      steps{
+        withSonarQubeEnv('credentailId: sonar-api')
+        sh "mvn clean package sonar:sonar"
+      }
+     }
   }
 }
    
