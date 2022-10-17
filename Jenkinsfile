@@ -9,6 +9,11 @@ pipeline {
       git branch: 'main', url: 'https://github.com/paramesh416/demo-counter-app.git'
        }
     }
+    stage('UNIT Test'){
+      steps{
+        sh "mvn test"
+      }
+    }
      stage('Maven Build'){
       steps{
         sh "mvn clean install"
