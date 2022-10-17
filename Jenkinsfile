@@ -16,17 +16,26 @@ pipeline {
     }
     stage('Integration Testing') {
       steps{
-        sh "mvn verify -DskipUnittests"
+          sh "mvn verify -DskipUnittests"
       }
     }
      stage('Static Code Analysis'){
       steps{
-        withSonarQubeEnv('credentailId: sonar-api')
-        sh "mvn clean package sonar:sonar"
+          scripts{
+            withSonarQubeEnv('credentailId: sonar-api'){
+              sh "mvn clean package sonar:sonar"
+            }
+          }
       }
      }
   }
 }
+              
+            
+     
+        
+       
+  
    
 
 
