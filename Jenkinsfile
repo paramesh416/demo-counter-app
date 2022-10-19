@@ -24,16 +24,16 @@ pipeline {
           sh "mvn verify -DskipUnittests"
       }
     }
-    stage('build && SonarQube analysis') {
-      steps {
-        withSonarQubeEnv(credentialsId: 'sonar-api') {
-          // Optionally use a Maven environment you've configured already
-          withMaven(maven:'Maven 3.8.6') {
-            sh 'mvn clean package sonar:sonar'
-          }
-        }
-      }
-    }
+   stage("build & SonarQube analysis") {
+     environment {
+       scannerHome = tool 'SonarQubeScanner'
+     }
+     steps {
+       withSonarQubeEnv('sonarqube') {
+         sh "${scannerHome}/bin/sonar-scanner"
+       }
+     }
+   }
     stage('Quality Gate Status'){
       steps{
         scrpit{
