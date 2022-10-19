@@ -38,7 +38,7 @@ pipeline {
       steps{
         scrpit{
           
-          waitfor QualityGate abortpipeline: false, credentialsId: 'sonar-api'
+          waitforQualityGate abortPipeline: false, credentialsId: 'sonar-api'
         }
       }
     }
